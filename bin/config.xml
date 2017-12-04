@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <device group="front-door" name="front-door-camera" devtype="video-source" factory="./libhb_ffmpeg_device.so" uri="./1.mp4"> 
+
+        <analytic factory="./libhb_dummy_analytic.so" />
+
+  </device>
+
+  <device group="living-room" name="living-room-camera" devtype="video-source" factory="./libhb_ffmpeg_device.so" uri="./2.mp4"> 
+
+        <analytic factory="./libhb_dummy_analytic.so" />
+
+  </device>
+
+</Root>
+

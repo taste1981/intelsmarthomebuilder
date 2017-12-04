@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rule-set name="armed">
+  <rule>
+    <conditions>
+      <device group="living-room" name="indoor-microphone" state="glass-breaking-detected" />
+    </conditions>
+    <actions level="red-alert" wait="10000">
+      <action play="alarm" message="alert.wav" repeat="10"/>
+      <action play="client-message" message="alert! glass breaking sound detected"/>
+      <action play="email=tao.q.tao@intel.com;nusrat.habib@intel.com;rowena.almeida@intel.com;anitha.suryanarayan@intel.com;" message="alert! glass breaking sound detected" />
+    </actions>
+  </rule>
+  <rule>
+    <conditions>
+      <device group="front-door" name="front-door-sensor" state="opened" />
+      <device group="front-door" name="front-door-camera" state="person-detected" status="known"/>
+    </conditions>
+    <actions level="none">
+      <action play="stop-alarm" message="nothing"/>
+    </actions>
+  </rule>
+  <rule>
+    <conditions>
+<!--    
+      <device group="front-door" name="front-door-sensor"  state="opened" />
+-->      
+      <device group="front-door" name="front-door-camera" state="person-detected" status="unknown" />
+    </conditions>
+    <actions level="red-alert">
+      <action play="alarm" message="alert.wav" repeat="10"/>
+      <action play="client-message" message="intruder! your door is opened, stranger detected!"/>
+      <action play="email=tao.q.tao@intel.com;nusrat.habib@intel.com;rowena.almeida@intel.com;anitha.suryanarayan@intel.com;" message="intruder! your door is opened, stranger detected!" />
+    </actions>
+  </rule>
+  <rule>
+    <conditions>
+      <device group="front-door" name="front-door-sensor" state="opened" />
+      <device group="front-door" name="front-door-camera" state="person-not-detected" />
+    </conditions>
+    <actions level="notification">
+      <action play="alarm" message="door-open.wav" repeat="10"/>
+      <action play="client-message" message="attention, door is opened, but there's no person detected"/>
+      <action play="email=tao.q.tao@intel.com;nusrat.habib@intel.com;rowena.almeida@intel.com;anitha.suryanarayan@intel.com;" message="attention, door is opened, but there's no person detected" />
+    </actions>
+  </rule>
+  <rule>
+    <conditions>
+      <device group="front-door" name="front-door-sensor" state="not-opened" />
+      <device group="front-door" name="front-door-camera" state="person-detected" status="known"/>
+    </conditions>
+    <actions level="notification">
+      <action play="alarm" message="how-did-you-come-in.wav" repeat="10"/>
+      <action play="client-message" message="it is a magic!"/>
+      <action play="email=tao.q.tao@intel.com;nusrat.habib@intel.com;rowena.almeida@intel.com;anitha.suryanarayan@intel.com;" message="it is a magic!" />
+    </actions>
+  </rule>
+  <rule>
+    <conditions>
+      <device group="front-door" name="front-door-sensor" state="not-opened" />
+      <device group="front-door" name="front-door-camera" state="person-detected" status="unknown" />
+    </conditions>
+    <actions level="alert">
+      <action play="alarm" message="alert.wav" repeat="10"/>
+      <action play="client-message" message="intruder! satan claus is coming to home, from chimney?!"/>
+      <action play="email=tao.q.tao@intel.com;nusrat.habib@intel.com;rowena.almeida@intel.com;anitha.suryanarayan@intel.com;" message="intruder! satan claus is coming to home, from chimney?!" />
+    </actions>
+  </rule>
+</rule-set>
+
